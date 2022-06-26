@@ -54,7 +54,7 @@ def medcostPred(request):
         region = request.POST.get("region")
     
         sample_df=pd.DataFrame({'age':age,'bmi':bmi,'children':children,'smoker':smoker,'region':region},index=[0])
-        model = pickle.load(open(r'DrugPrediction\medcost_estimator.pkl', "rb"))
+        model = pickle.load(open(r'DrugPrediction/medcost_estimator.pkl', "rb"))
         print(sample_df)
         print(type(sample_df))
         medcost_pred=model.predict(sample_df)
@@ -94,7 +94,7 @@ def custclassPred(request):
                                 'Online_Purchase_Amount':onlineTrans,'Portfolio_Balance':portBalance},index=[0])
         print(sample_df)
         print(type(sample_df))
-        model = pickle.load(open('DrugPrediction\custclass_estimator.pkl', "rb"))
+        model = pickle.load(open('DrugPrediction/custclass_estimator.pkl', "rb"))
         
         cust_pred=model.predict(sample_df)
         context ={}
@@ -166,7 +166,7 @@ def fpsPred(request):
         import os
         directory_path = os.getcwd()
         print("My current directory is : " + directory_path)
-        model = pickle.load(open(r'DrugPrediction\fps_estimator.pkl', "rb"))
+        model = pickle.load(open(r'DrugPrediction/fps_estimator.pkl', "rb"))
         # model = pickle.load(open('fps_ml_model.pkl', "rb"))
         print(sample_df)
         print(type(sample_df))
