@@ -1,0 +1,141 @@
+<html>
+<head>
+</head>
+<style>
+.div1{
+font-family:verdana;
+font-size:16;
+font-style:underline;
+border: 1px solid black;
+background-color:lightgrey;
+}
+.div2{
+font-family:verdana;
+font-size:16;
+color:white;
+font-style:underline;
+border: 1px solid black;
+padding: 10px;
+background-color:grey;
+}
+.div3{
+font-family:verdana;
+font-size:14;
+border: 0px solid black;
+padding: 1px;
+background-color:lightgrey;
+width:800px;
+text-align: left;
+margin: 0 auto;
+}
+
+.div4{
+font-family:verdana;
+font-size:16;
+font-style:underline;
+border: 1px solid black;
+padding: 5px;
+background-color:lightgrey;
+width:600px;
+text-align: left;
+margin: 0 auto;
+}
+
+a:link, a:visited {
+ 
+  color: white;
+  font-style:bold;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+
+}
+a:hover, a:active {
+   border: 2px solid black;
+}
+th,td {
+text-align: left;
+width:300px;
+padding:10px
+}
+
+</style>
+</head>
+<body>
+
+<div class="div1">
+<H1><center>ML Projects Repository</center></H1>
+</div>
+
+ <div class="div2">
+ <b>
+
+      <a href='/drug'>Drug Prediction</a>
+	  <a href='/medcost'>Medical Cost Prediction</a>
+	  <a href='/custclass'>Customer Classification</a>
+	  <!--<a href='/fps'>Flight Passenger Satisfaction</a>-->
+
+	
+</b>
+</div>
+
+
+
+<div class=div3>
+
+<h2><center>Enter Transaction Detail</center></h2>
+
+<div class=div4>
+<form action="/custclassPred/" method="POST">
+{% csrf_token %}
+<table>
+{{form.as_table}}
+</table>
+<center><button type="submit"><h3>Predict Customer Class</h3></button>
+</form>
+</div>
+
+<h2><p align=center>&nbsp;{{cust_pred}}</p></h2>
+</div>
+<div class=div2>
+<br>
+
+</div>
+
+</body>
+</html>
+<!--
+<table>
+<td>
+<p>Avg Credit Card Transaction Amt.:
+<p>Avg. Balance Transfer Amt :
+<p>Life Insurance Amt :
+<p>Medical Insurance Amt.:
+<p>Avg. A/C_Balance :
+<p>Personal Loan Amt :
+<p>Home Loan Amt.:
+<p>Online Purchase_Amt :
+<p>Portfolio Balance:
+</td>
+<td>
+<input type="text" name="credit"></p>
+
+<input type="text" name="balanceTrans"></p>
+
+<input type="text" name="lifeins"></p>
+
+<input type="text" name="medins"></p>
+
+<input type="text" name="acBalance"></p>
+
+<input type="text" name="perloan"></p>
+
+<input type="text" name="homeloan"></p>
+
+<input type="text" name="online"></p>
+
+<input type="text" name="portbalance"></p>
+</td>
+</table>
+-->
+

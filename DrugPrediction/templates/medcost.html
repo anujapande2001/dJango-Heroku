@@ -1,0 +1,140 @@
+<html>
+<head>
+</head>
+<style>
+.div1{
+font-family:verdana;
+font-size:16;
+font-style:underline;
+border: 1px solid black;
+background-color:lightgrey;
+}
+.div2{
+font-family:verdana;
+font-size:16;
+color:white;
+font-style:underline;
+border: 1px solid black;
+padding: 10px;
+background-color:grey;
+}
+.div3{
+font-family:verdana;
+font-size:14;
+border: 0px solid black;
+padding: 1px;
+background-color:lightgrey;
+width:800px;
+text-align: left;
+margin: 0 auto;
+}
+
+.div4{
+font-family:verdana;
+font-size:16;
+font-style:underline;
+border: 1px solid black;
+padding: 5px;
+background-color:lightgrey;
+width:600px;
+text-align: left;
+margin: 0 auto;
+}
+a:link, a:visited {
+ 
+  color: white;
+  font-style:bold;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+
+}
+a:hover, a:active {
+   border: 2px solid black;
+}
+
+th,td {
+text-align: left;
+width:100px;
+padding:10px
+}
+
+</style>
+</head>
+<body>
+
+<div class="div1">
+<H1><center>ML Projects Repository</center></H1>
+</div>
+
+ <div class="div2">
+ <b>
+
+      <a href='/drug'>Drug Prediction</a>
+	  <a href='/medcost'>Medical Cost Prediction</a>
+	  <a href='/custclass'>Customer Classification</a>
+	  <!--<a href='/fps'>Flight Passenger Satisfaction</a>-->
+
+	
+</b>
+</div>
+
+
+<div class=div3>
+
+<h2><center>Enter Person Detail</center></h2>
+
+<div class=div4>
+<form action="/medcostpred/" method="POST">
+{% csrf_token %}
+<table>
+{{form.as_table}}
+</table>
+<center><button type="submit"><h3>Predict Medical Cost</h3></button>
+</form>
+</div>
+
+<h2><p align=center>&nbsp;{{medcost_pred}}</p></h2>
+</div>
+<div class=div2>
+<br>
+
+</div>
+
+</body>
+</html>
+
+<!--
+<table>
+<td width=100px style="padding:15px">
+<p>Age:
+<p>BMI:
+<p>Children:
+<p>Smoker:
+<p>Region:
+<td>
+<td>
+<input type="text" name="age"></p>
+
+<input type="text" name="bmi"></p>
+
+<input type="text" name="children"></p>
+
+<select name="smoker">
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+</select>
+</p>
+
+<select name="region">
+  <option value="northeast">North East</option>
+  <option value="northwest">North West</option>
+  <option value="southeast">South East</option>
+  <option value="southwest">South West</option>
+
+</select>
+</p>
+</td>
+
+</table>
+-->

@@ -1,0 +1,288 @@
+<html>
+<head>
+</head>
+<style>
+
+.div1{
+font-family:verdana;
+font-size:16;
+font-style:underline;
+border: 1px solid black;
+background-color:lightgrey;
+}
+.div2{
+font-family:verdana;
+font-size:16;
+color:white;
+font-style:underline;
+border: 1px solid black;
+padding: 10px;
+background-color:grey;
+}
+.div3{
+font-family:verdana;
+font-size:14;
+border: 0px solid black;
+padding: 1px;
+background-color:lightgrey;
+width:1200px;
+text-align: left;
+margin: 0 auto;
+}
+
+.div4{
+font-family:verdana;
+font-size:16;
+font-style:underline;
+border: 1px solid black;
+padding: 5px;
+background-color:lightgrey;
+width:1000px;
+text-align: left;
+margin: 0 auto;
+}
+
+a:link, a:visited {
+ 
+  color: white;
+  font-style:bold;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+
+}
+a:hover, a:active {
+   border: 2px solid black;
+}
+
+th,td {
+text-align: left;
+width:500px;
+padding:10px
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="div1">
+<H1><center>ML Projects Repository</center></H1>
+</div>
+
+ <div class="div2">
+ <b>
+
+      <a href='/drug'>Drug Prediction</a>
+	  <a href='/medcost'>Medical Cost Prediction</a>
+	  <a href='/custclass'>Customer Classification</a>
+	  <a href='/fps'>Flight Passenger Satisfaction</a>
+
+	
+</b>
+</div>
+
+
+
+<div class=div3>
+
+<h2><center>Enter Passenger Detail</center></h2>
+
+<div class=div4>
+<form action="/fpspred/" method="POST">
+{% csrf_token %}
+<table>
+{{form.as_table}}
+</table>
+<center><button type="submit"><h3>Predict Satisfaction </h3></button>
+</form>
+</div>
+
+
+<h2><p align=center>&nbsp;{{fps_pred}}</p></h2>
+</div>
+
+<div class=div2>
+<br>
+
+</div>
+
+</body>
+</html>
+
+
+<!--<table>
+<td>
+<p>Sex: 
+<p>Customer Type: 
+<p>Age:
+<p>Type of Travel:
+<p>Class:
+<p>Flight Distance(KM):
+<p>Rating for Inflight wifi service:
+<p>Rating for Departure/Arrival time convenience:
+<p>Rating for Ease of Online booking
+<p>Rating for Gate location
+<p>Rating for Food and Drink
+</td>
+<td>
+<p>
+<select name="sex">
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+</select>
+<p>
+<select name="custType">
+  <option value="Loyal">Loyal Customer</option>
+  <option value="Disloyal">Disloyal Customer</option>
+</select>
+<p>
+<input type="text" name="age">
+<p>
+<select name="travelType">
+  <option value="Personal">Personal Travel</option>
+  <option value="Business">Business Travel</option>
+</select>
+<p>
+<select name="flClass">
+  <option value="Eco">Economic</option>
+  <option value="Business">Business</option>
+  <option value="EcoPlus">Economic Plus</option>
+</select>
+<p>
+<input type="text" name="flDis">
+<p>
+<select name="wifiRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+<select name="datRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+<select name="eosyBookRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+<select name="gateLocRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+<select name="foodRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+</td>
+<td>
+<p>Rating for Online boarding
+<p>Rating for Seat comfort
+<p>Rating for Inflight Entertainment
+<p>Rating for On-board service
+<p>Rating for Leg room service
+<p>Rating for Baggage handling
+<p>Rating for Checkin service
+<p>Rating for Inflight service
+<p>Rating for Cleanliness
+<p>Departure Delay in Minutes:
+<p>Arrival Delay in Minutes
+</td>
+<td>
+<p>
+<select name="olBoardRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+<select name="seatComfRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+<select name="entertainRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+<select name="onbrdSerRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+<select name="legRmRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+<select name="bagRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+<select name="chkinRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+<select name="inflserRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+<select name="cleanRat">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+<p>
+<input type="text" name="depDelay"></p>
+<input type="text" name="arrDelay"></p>
+</td>
+</table>
+-->
+
