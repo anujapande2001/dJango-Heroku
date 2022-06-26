@@ -18,7 +18,7 @@ def drugPred(request):
         na = request.POST.get("na")
     
         sample_df=pd.DataFrame({'Age':age,'Sex':sex,'BP':bp,'Cholesterol':ch,'Na_to_K':na},index=[0])
-        model = pickle.load(open('drug_estimator.pkl', "rb"))
+        model = pickle.load(open(r'DrugPrediction/drug_estimator.pkl', "rb"))
         drug_pred=model.predict(sample_df)
         context ={}
         context["form"]=drugForm()
