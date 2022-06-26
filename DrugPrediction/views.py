@@ -18,7 +18,7 @@ def drugPred(request):
         na = request.POST.get("na")
     
         sample_df=pd.DataFrame({'Age':age,'Sex':sex,'BP':bp,'Cholesterol':ch,'Na_to_K':na},index=[0])
-        model = pickle.load(open('DrugPrediction\drug_estimator.pkl', "rb"))
+        model = pickle.load(open(r'DrugPrediction\drug_estimator.pkl', "rb"))
         drug_pred=model.predict(sample_df)
         context ={}
         context["form"]=drugForm()
@@ -54,7 +54,7 @@ def medcostPred(request):
         region = request.POST.get("region")
     
         sample_df=pd.DataFrame({'age':age,'bmi':bmi,'children':children,'smoker':smoker,'region':region},index=[0])
-        model = pickle.load(open('DrugPrediction\medcost_estimator.pkl', "rb"))
+        model = pickle.load(open(r'DrugPrediction\medcost_estimator.pkl', "rb"))
         print(sample_df)
         print(type(sample_df))
         medcost_pred=model.predict(sample_df)
