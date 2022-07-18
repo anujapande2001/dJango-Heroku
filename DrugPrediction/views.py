@@ -4,7 +4,7 @@ from django.template import loader
 import pandas as pd
 import pickle
 import sklearn
-from .forms import drugForm,medCostForm,custClassForm,fpsForm
+from .forms import drugForm,medCostForm,custClassForm,teleChurnForm,fpsForm
 
 
 def drugPred(request):
@@ -18,7 +18,7 @@ def drugPred(request):
         na = request.POST.get("na")
     
         sample_df=pd.DataFrame({'Age':age,'Sex':sex,'BP':bp,'Cholesterol':ch,'Na_to_K':na},index=[0])
-        model = pickle.load(open(r'DrugPrediction/drug_estimator.pkl', "rb"))
+        model = pickle.load(open('DrugPrediction\drug_estimator.pkl', "rb"))
         drug_pred=model.predict(sample_df)
         context ={}
         context["form"]=drugForm()
@@ -54,7 +54,7 @@ def medcostPred(request):
         region = request.POST.get("region")
     
         sample_df=pd.DataFrame({'age':age,'bmi':bmi,'children':children,'smoker':smoker,'region':region},index=[0])
-        model = pickle.load(open(r'DrugPrediction/medcost_estimator.pkl', "rb"))
+        model = pickle.load(open('DrugPrediction\medcost_estimator.pkl', "rb"))
         print(sample_df)
         print(type(sample_df))
         medcost_pred=model.predict(sample_df)
@@ -94,7 +94,7 @@ def custclassPred(request):
                                 'Online_Purchase_Amount':onlineTrans,'Portfolio_Balance':portBalance},index=[0])
         print(sample_df)
         print(type(sample_df))
-        model = pickle.load(open('DrugPrediction/custclass_estimator.pkl', "rb"))
+        model = pickle.load(open('DrugPrediction\custclass_estimator.pkl', "rb"))
         
         cust_pred=model.predict(sample_df)
         context ={}
@@ -166,7 +166,7 @@ def fpsPred(request):
         import os
         directory_path = os.getcwd()
         print("My current directory is : " + directory_path)
-        model = pickle.load(open(r'DrugPrediction/fps_estimator.pkl', "rb"))
+        model = pickle.load(open(r'DrugPrediction\fps_estimator.pkl', "rb"))
         # model = pickle.load(open('fps_ml_model.pkl', "rb"))
         print(sample_df)
         print(type(sample_df))
@@ -186,3 +186,61 @@ def fpsPred(request):
         context ={}
         context["form"]=fpsForm()
         return render(request,'fps.html',context)
+
+def teleChurnPred(request):
+
+    if request.method == 'POST':
+        print("Inside teleChurnPred")
+        
+        SeniorCitizen = request.POST.get("SeniorCitizen")
+        Dependents = request.POST.get("Dependents")
+        PhoneService = request.POST.get("PhoneService")
+        MultipleLines = request.POST.get("MultipleLines")
+        
+        
+        InternetService = request.POST.get("InternetService")
+        OnlineSecurity = request.POST.get("OnlineSecurity")
+        OnlineBackup = request.POST.get("OnlineBackup")        
+        DeviceProtection = request.POST.get("DeviceProtection")
+        
+        TechSupport = request.POST.get("TechSupport")
+        StreamingTV = request.POST.get("StreamingTV")
+        StreamingMovies = request.POST.get("StreamingMovies")        
+        Contract = request.POST.get("Contract")
+        
+        PaperlessBilling = request.POST.get("PaperlessBilling")
+        PaymentMethod = request.POST.get("PaymentMethod")
+        tenure = request.POST.get("tenure")
+        MonthlyCharges = request.POST.get("MonthlyCharges")
+        
+      
+
+        sample_df=pd.DataFrame({'SeniorCitizen':int(SeniorCitizen),'Dependents':Dependents,
+                                'PhoneService':PhoneService,'MultipleLines':MultipleLines,
+                                'InternetService':InternetService,'OnlineSecurity':OnlineSecurity,
+                                'OnlineBackup':OnlineBackup,'DeviceProtection':DeviceProtection,
+                                'TechSupport':TechSupport,'StreamingTV':StreamingTV,
+                                'StreamingMovies':StreamingMovies,'Contract':Contract,
+                                'PaperlessBilling':PaperlessBilling,'PaymentMethod':PaymentMethod,
+                                'tenure':tenure,'MonthlyCharges':MonthlyCharges},index=[0])
+        print(sample_df)
+        print(type(sample_df))
+        model = pickle.load(open('DrugPrediction\TeleChurn_model.pkl', "rb"))
+        
+        cust_pred=model.predict(sample_df)
+        context ={}
+        context["form"]=teleChurnForm()        
+        print("After Predict")
+        print(cust_pred)
+        if cust_pred[0]==1:
+            context['cust_pred']="This Customer would churn "
+        elif cust_pred[0]==0:
+            context['cust_pred']="This Customer wound not churn"
+        
+        return render(request,"teleChurn.html",context)
+    else:
+        context ={}
+        context["form"]=teleChurnForm()
+        return render(request,'teleChurn.html',context)
+    
+    

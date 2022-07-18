@@ -12,4 +12,6 @@ urlpatterns = [
     path('medcostpred/', views.medcostPred),
     path('custclass/', views.custclassPred),
     path('custclassPred/', views.custclassPred),
+    path('teleChurn/', views.teleChurnPred),
+    path('teleChurnPred/', views.teleChurnPred),
 ]

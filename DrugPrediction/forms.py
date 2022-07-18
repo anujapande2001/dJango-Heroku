@@ -120,3 +120,71 @@ class fpsForm(forms.Form):
     
     depDelay = forms.IntegerField(label='Departure Delay in min')
     arrDelay = forms.IntegerField(label='Arrival Delay in min')
+    
+class teleChurnForm(forms.Form):
+    
+    lstSenior = (
+    (1,'Yes'),
+    (0, 'No'),
+    )
+    
+    list1 = (
+    ('Yes','Yes'),
+    ('No', 'No'),
+    )
+    
+    list2 = (
+    ('Yes','Yes'),
+    ('No', 'No'),
+    ('No phone service',"No Phone Service"),
+    )
+    
+    list3 = (
+    ('Yes','Yes'),
+    ('No', 'No'),
+    ('No internet service',"No Internet Service"),
+    )
+    
+    lstIntSer = (
+    ('DSL','DSL'),
+    ('Fiber optic', 'Fiber Optic'),
+    ('No',"No Internet Service"),
+    )
+    
+    lstContract = (
+    ('One year','One Year'),
+    ('Two year', 'Two Year'),
+    ('Month-to-month',"Month-to-month"),
+    )
+    
+    lstPayment= (
+    ('Mailed check','Mailed check'),
+    ('Credit card (automatic)', 'Credit card (automatic)'),
+    ('Electronic check','Electronic check'),
+    ('Bank transfer (automatic)','Bank transfer (automatic)'),
+    )
+    
+
+    
+    
+    SeniorCitizen = forms.CharField(label="SeniorCitizen",widget=forms.Select(choices=lstSenior))
+    Dependents = forms.CharField(label="Dependents",widget=forms.Select(choices=list1)) 
+    PhoneService = forms.CharField(label="PhoneService",widget=forms.Select(choices=list1)) 
+    MultipleLines = forms.CharField(label="MultipleLines",widget=forms.Select(choices=list2)) 
+    
+    MultipleLines = forms.CharField(label="MultipleLines",widget=forms.Select(choices=list2)) 
+    InternetService = forms.CharField(label="InternetService",widget=forms.Select(choices=lstIntSer)) 
+    OnlineSecurity = forms.CharField(label="OnlineSecurity",widget=forms.Select(choices=list3)) 
+    OnlineBackup = forms.CharField(label="OnlineBackup",widget=forms.Select(choices=list3)) 
+        
+    DeviceProtection = forms.CharField(label="DeviceProtection",widget=forms.Select(choices=list3)) 
+    TechSupport = forms.CharField(label="TechSupport",widget=forms.Select(choices=list3)) 
+    StreamingTV = forms.CharField(label="StreamingTV",widget=forms.Select(choices=list3)) 
+    StreamingMovies = forms.CharField(label="StreamingMovies",widget=forms.Select(choices=list3)) 
+    
+    Contract = forms.CharField(label="Contract",widget=forms.Select(choices=lstContract)) 
+    PaperlessBilling = forms.CharField(label="PaperlessBilling",widget=forms.Select(choices=list1)) 
+    PaymentMethod = forms.CharField(label="PaymentMethod",widget=forms.Select(choices=lstPayment)) 
+    tenure = forms.IntegerField(label="tenure") 
+    MonthlyCharges = forms.IntegerField(label="MonthlyCharges") 
+    
